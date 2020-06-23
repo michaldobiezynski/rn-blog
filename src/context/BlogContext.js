@@ -4,7 +4,10 @@ import createDataContext from "./createDataContext";
 const blogReducer = (state, action) => {
   switch (action.type) {
     case "edit_blogpost":
-      return;
+      return state.map((blogPost) => {
+        return blogPost.id === action.payload.id ? action.payload : blogPost;
+      });
+
     case "delete_blogpost":
       return state.filter((blogPost) => {
         return blogPost.id !== action.payload;
@@ -44,7 +47,7 @@ const editBlogPost = (dispatch) => {
 
 export const { Context, Provider } = createDataContext(
   blogReducer,
-  { addBlogPost, deleteBlogPost, edit_blogpost },
+  { addBlogPost, deleteBlogPost, editBlogPost },
   [
     {
       id: Math.floor(Math.random() * 999999),
