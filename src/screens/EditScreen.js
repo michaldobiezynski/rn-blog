@@ -11,7 +11,15 @@ const EditScreen = ({ navigation }) => {
     (blogPost) => blogPost.id === navigation.getParam("id")
   );
 
-  return <BlogPostFrom />;
+  return (
+    <BlogPostFrom
+      initialValues={{ title: blogPost.title, content: blogPost.content }}
+      onSubmit={(title, content) => {
+        // addBlogPost(title, content, () => navigation.navigate("Index"));
+        console.log(title + " " + content);
+      }}
+    />
+  );
 };
 
 export default EditScreen;
