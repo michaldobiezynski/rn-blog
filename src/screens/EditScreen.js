@@ -16,7 +16,9 @@ const EditScreen = ({ navigation }) => {
       initialValues={{ title: blogPost.title, content: blogPost.content }}
       onSubmit={(title, content) => {
         // addBlogPost(title, content, () => navigation.navigate("Index"));
-        editBlogPost(navigation.getParam("id"), title, content);
+        editBlogPost(navigation.getParam("id"), title, content, () =>
+          navigation.pop()
+        );
       }}
     />
   );
