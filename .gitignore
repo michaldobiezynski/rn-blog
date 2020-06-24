@@ -1,4 +1,5 @@
 node_modules/**/*
+jsonServer/node_modules
 .expo/*
 npm-debug.*
 *.jks
