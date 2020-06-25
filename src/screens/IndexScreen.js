@@ -1,18 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
-  StyleSheet,
-  Text,
   View,
+  Text,
+  StyleSheet,
   FlatList,
   Button,
   TouchableOpacity,
 } from "react-native";
+import { Context } from "../context/BlogContext";
 import { Feather } from "@expo/vector-icons";
 
-import { Context } from "../context/BlogContext";
-
 const IndexScreen = ({ navigation }) => {
-  const { state, addBlogPost, deleteBlogPost } = useContext(Context);
+  const { state, deleteBlogPost, getBlogPosts } = useContext(Context);
+
+  useEffect(() => {
+    getBlogPosts();
+  }, []);
 
   return (
     <View>
@@ -27,10 +30,7 @@ const IndexScreen = ({ navigation }) => {
                 <Text style={styles.title}>
                   {item.title} - {item.id}
                 </Text>
-                <TouchableOpacity
-                  onPress={() => {
-                    deleteBlogPost(item.id);
-                  }}>
+                <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
                   <Feather style={styles.icon} name="trash" />
                 </TouchableOpacity>
               </View>
@@ -46,13 +46,11 @@ IndexScreen.navigationOptions = ({ navigation }) => {
   return {
     headerRight: () => (
       <TouchableOpacity onPress={() => navigation.navigate("Create")}>
-        <Feather style={{ marginRight: 40 }} name="plus" size={30} />
+        <Feather name="plus" size={30} />
       </TouchableOpacity>
     ),
   };
 };
-
-export default IndexScreen;
 
 const styles = StyleSheet.create({
   row: {
@@ -70,3 +68,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 });
+
+export default IndexScreen;
