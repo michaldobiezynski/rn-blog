@@ -11,14 +11,24 @@
       "id": 2
     },
     {
-      "title": "Net created api post",
-      "content": "Some content",
-      "id": 3
-    },
-    {
       "title": "Third post creation",
       "content": "Some content",
       "id": 4
+    },
+    {
+      "title": "Forth post addition",
+      "content": "Fsdfdcd",
+      "id": 5
+    },
+    {
+      "title": "Fewqdfedqdsa",
+      "content": "Dsadsa",
+      "id": 6
+    },
+    {
+      "title": "Aaaaa",
+      "content": "Aaaa",
+      "id": 7
     }
   ]
 }
